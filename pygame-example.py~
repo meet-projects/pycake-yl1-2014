@@ -28,10 +28,10 @@ if __name__ == "__main__":
 				if placeX <= 540:
 					placeX += 40
 				else:
-					if placeY < 540:
+					if placeY <= 540:
 						placeX -= 40
 						placeY += 40
-					if placeY == 540:
+					if placeY > 540:
 						placeX -= 40
 				
 
