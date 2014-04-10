@@ -16,6 +16,23 @@ class Button(object):
 		myfont = pygame.font.SysFont("monospace", 15)
 		label = myfont.render(self.text, 1, (36,62,74))
 		main_screen.blit(label, (self.x+5, self.y+5))
+flavor=""
+def goToBirthday():
+	main_screen.fill((91, 196, 201))
+	myfont = pygame.font.SysFont("monospace", 45)
+	label = myfont.render("BIRTHDAY CAKE:", 1, (196,148,71))
+	main_screen.blit(label, (10, 10))
+	myfont = pygame.font.SysFont("monospace", 35)
+	label = myfont.render("Flavor : "+flavor, 1, (196,148,71))
+	main_screen.blit(label, (10, 50))
+def goToWedding():
+	main_screen.fill((91, 196, 201))
+	myfont = pygame.font.SysFont("monospace", 45)
+	label = myfont.render("WEDDING CAKE:", 1, (196,148,71))
+	main_screen.blit(label, (10, 10))
+	myfont = pygame.font.SysFont("monospace", 35)
+	label = myfont.render("Flavor : "+flavor, 1, (196,148,71))
+	main_screen.blit(label, (10, 50))
 
 if __name__ == "__main__":
 	pygame.init()
@@ -49,14 +66,17 @@ if __name__ == "__main__":
 			x, y = ev.pos
             		if Chocolate.myRec.collidepoint(x, y):
             			print "hi"
+            			flavor="chocolate"
             		if Vanilla.myRec.collidepoint(x, y):
             			print "hi2"
+            			flavor="vanilla"
             		if Strawberry.myRec.collidepoint(x, y):
             			print "hi3"
+            			flavor="strawberry"
             		if Birthday.myRec.collidepoint(x, y):
-            			print "hi4"
+            			goToBirthday()
             		if Wedding.myRec.collidepoint(x, y):
-            			print "hi5"
+            			goToWedding()
 
 
     
