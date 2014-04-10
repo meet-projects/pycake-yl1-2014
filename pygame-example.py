@@ -16,14 +16,15 @@ class Button(object):
 		myfont = pygame.font.SysFont("Purisa", 15)
 		label = myfont.render(self.text, 1, (36,62,74))
 		main_screen.blit(label, (self.x+10, self.y+10))
+price = 0
 flavor=""
 gender =""
 layer =""
 myType=""
 placeX = 100
 placeY = 200
-female = Button(100, 200, 150, 80, "Female", 153, 103, 199)
-male = Button(300, 200, 150, 80, "Male", 153, 103, 199)
+female = Button(100, 200, 150, 80, "Female", 245, 113, 179)
+male = Button(300, 200, 150, 80, "Male", 113, 161, 245)
 layer1 = Button(100, 200, 80, 80, "1", 153, 103, 199)
 layer2 = Button(200, 200, 80, 80, "2", 153, 103, 199)
 layer3 = Button(300, 200, 80, 80, "3", 153, 103, 199)
@@ -45,9 +46,9 @@ def goToBirthday():
 	main_screen.blit(label, (10, 10))
 	myfont = pygame.font.SysFont("Purisa", 35)
 	label = myfont.render("Flavor : "+flavor, 1, (196,148,71))
-	main_screen.blit(label, (10, 50))
+	main_screen.blit(label, (10, 80))
 	label = myfont.render("Choose your gender:", 1, (196,148,71))
-	main_screen.blit(label, (10, 100))
+	main_screen.blit(label, (10, 140))
 	female.draw(main_screen)
 	male.draw(main_screen)
 	submit.draw(main_screen)
@@ -59,9 +60,9 @@ def goToWedding():
 	main_screen.blit(label, (10, 10))
 	myfont = pygame.font.SysFont("Purisa", 35)
 	label = myfont.render("Flavor : "+flavor, 1, (196,148,71))
-	main_screen.blit(label, (10, 50))
+	main_screen.blit(label, (10, 80))
 	label = myfont.render("Choose number of layers:", 1, (196,148,71))
-	main_screen.blit(label, (10, 100))
+	main_screen.blit(label, (10, 140))
 	layer1.draw(main_screen)
 	layer2.draw(main_screen)
 	layer3.draw(main_screen)
@@ -85,6 +86,8 @@ def submitButton():
 	else:
 		label = myfont.render("Gender : "+gender, 1, (196,148,71))
 		main_screen.blit(label, (10, 200))
+	label = myfont.render("Price = " + str(price) + " dollars", 1, (196,148,71))
+	main_screen.blit(label, (10,260)) 
 	myfont = pygame.font.SysFont("Purisa", 45)
 	label = myfont.render("THANK YOU!", 1, (196,148,71))
 	main_screen.blit(label, (10, 400))
@@ -97,13 +100,13 @@ def mainScreen():
 	Vanilla.draw(main_screen)
 	Strawberry.draw(main_screen)
 	myfont = pygame.font.SysFont("Purisa", 45)
-	label = myfont.render("Welcome to PyCake!", 1, (196,148,71))
+	label = myfont.render("Welcome to PyCake!", 1, (0,0,0))
 	main_screen.blit(label, (10, 10))
 	myfont = pygame.font.SysFont("Purisa", 35)
-	label = myfont.render("Choose a flavor:", 1, (196,148,71))
+	label = myfont.render("Choose a flavor:", 1, (0,0,0))
 	main_screen.blit(label, (10, 100))
 	myfont = pygame.font.SysFont("Purisa", 35)
-	label = myfont.render("Choose your event:", 1, (196,148,71))
+	label = myfont.render("Choose your event:", 1, (0,0,0))
 	main_screen.blit(label, (10, 300))
 	Birthday.draw(main_screen)
 	Wedding.draw(main_screen)
@@ -117,12 +120,15 @@ if __name__ == "__main__":
 		if ev.type == pygame.MOUSEBUTTONDOWN:
 			x, y = ev.pos
             		if Chocolate.myRec.collidepoint(x, y):
+				price = 200
             			print "hi"
             			flavor="chocolate"
             		if Vanilla.myRec.collidepoint(x, y):
+				price = 300
             			print "hi2"
             			flavor="vanilla"
             		if Strawberry.myRec.collidepoint(x, y):
+				price = 400
             			print "hi3"
             			flavor="strawberry"
             		if Birthday.myRec.collidepoint(x, y):
@@ -137,14 +143,19 @@ if __name__ == "__main__":
 			if male.myRec.collidepoint(x, y):
             			gender="male"
 			if layer1.myRec.collidepoint(x, y):
+				price = price*1
             			layer= "1 layer"
 			if layer2.myRec.collidepoint(x, y):
+				price = price*2
             			layer= "2 layers"
 			if layer3.myRec.collidepoint(x, y):
+				price = price*3
             			layer= "3 layers"
 			if layer4.myRec.collidepoint(x, y):
+				price = price*4
             			layer= "4 layers"
 			if layer5.myRec.collidepoint(x, y):
+				price = price*5
             			layer= "5 layers"
 			if submit.myRec.collidepoint(x, y):
             			submitButton()
@@ -153,6 +164,7 @@ if __name__ == "__main__":
 				gender =""
 				layer =""
 				myType=""
+				price = 0
 				mainScreen()
 			if startOver.myRec.collidepoint(x, y):
             			flavor=""
