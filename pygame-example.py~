@@ -36,6 +36,7 @@ Vanilla = Button(300, 200, 90, 80, "Vanilla", 194, 185, 172)
 Strawberry = Button(500, 200, 90, 80, "Strawberry", 194, 21, 64)
 Birthday = Button(100, 400, 150, 80, "Birthday", 91, 227, 93)
 Wedding = Button(350, 400, 150, 80, "Wedding", 153, 103, 199)
+startOver  = Button(500, 500, 150, 80, "Start Again", 153, 103, 199)
 def goToBirthday():
 	myType="birthday"
 	main_screen.fill((91, 196, 201))
@@ -75,18 +76,19 @@ def submitButton():
 	main_screen.blit(label, (10, 10))
 	myfont = pygame.font.SysFont("Purisa", 35)
 	label = myfont.render("Flavor : "+flavor, 1, (196,148,71))
-	main_screen.blit(label, (10, 50))
+	main_screen.blit(label, (10, 60))
 	label = myfont.render("Event : "+myType, 1, (196,148,71))
 	main_screen.blit(label, (10, 100))
 	if myType=="wedding":
 		label = myfont.render("Layers : "+layer, 1, (196,148,71))
-		main_screen.blit(label, (10, 150))
+		main_screen.blit(label, (10, 140))
 	else:
 		label = myfont.render("Gender : "+gender, 1, (196,148,71))
-		main_screen.blit(label, (10, 150))
+		main_screen.blit(label, (10, 140))
 	myfont = pygame.font.SysFont("Purisa", 45)
 	label = myfont.render("THANK YOU!", 1, (196,148,71))
 	main_screen.blit(label, (10, 400))
+	startOver.draw(main_screen)
 def mainScreen():
 	main_screen.fill((91, 196, 201))
 	placeX = 100
@@ -147,6 +149,12 @@ if __name__ == "__main__":
 			if submit.myRec.collidepoint(x, y):
             			submitButton()
 			if cancel.myRec.collidepoint(x, y):
+            			flavor=""
+				gender =""
+				layer =""
+				myType=""
+				mainScreen()
+			if startOver.myRec.collidepoint(x, y):
             			flavor=""
 				gender =""
 				layer =""
