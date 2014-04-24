@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 class Button(object):
 	def __init__(self, x, y, x2, y2,text, num1, num2, num3):
@@ -117,6 +118,8 @@ if __name__ == "__main__":
 	mainScreen()
 	while True:
 		ev = pygame.event.poll()
+		if ev.type == pygame.QUIT:
+			sys.exit()
 		if ev.type == pygame.MOUSEBUTTONDOWN:
 			x, y = ev.pos
             		if Chocolate.myRec.collidepoint(x, y):
