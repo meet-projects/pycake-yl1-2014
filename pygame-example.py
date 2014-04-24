@@ -93,6 +93,9 @@ def submitButton():
 	label = myfont.render("THANK YOU!", 1, (196,148,71))
 	main_screen.blit(label, (10, 400))
 	startOver.draw(main_screen)
+	picture = pygame.image.load("cake.jpg")
+	picture = pygame.transform.scale(picture, (200,150))
+	main_screen.blit(picture,(450,200))
 def mainScreen():
 	main_screen.fill((91, 196, 201))
 	placeX = 100
@@ -122,18 +125,30 @@ if __name__ == "__main__":
 			sys.exit()
 		if ev.type == pygame.MOUSEBUTTONDOWN:
 			x, y = ev.pos
-            		if Chocolate.myRec.collidepoint(x, y):
-				price = 200
-            			print "hi"
-            			flavor="chocolate"
-            		if Vanilla.myRec.collidepoint(x, y):
-				price = 300
-            			print "hi2"
-            			flavor="vanilla"
-            		if Strawberry.myRec.collidepoint(x, y):
-				price = 400
-            			print "hi3"
-            			flavor="strawberry"
+            		if Chocolate.myRec.collidepoint(x, y) and myType=="":
+						price = 200
+						flavor="chocolate"
+						picture = pygame.image.load("chocolatecake.jpg")
+						picture = pygame.transform.scale(picture, (90,80))
+						main_screen.blit(picture,(100,200))
+						Strawberry.draw(main_screen)
+						Vanilla.draw(main_screen) 
+            		if Vanilla.myRec.collidepoint(x, y) and myType=="":
+						price = 300 
+						picture = pygame.image.load("vanillacaketibah.jpg")
+						picture = pygame.transform.scale(picture, (90,80)) 
+						main_screen.blit(picture,(300,200)) 
+						Chocolate.draw(main_screen)
+						Strawberry.draw(main_screen)
+						flavor="vanilla"
+            		if Strawberry.myRec.collidepoint(x, y) and myType=="":
+						price = 400
+						picture = pygame.image.load("strawberrycake.jpg")
+						picture = pygame.transform.scale(picture, (90,80)) 
+						main_screen.blit(picture,(500,200)) 
+						Chocolate.draw(main_screen)
+						Vanilla.draw(main_screen)
+						flavor="strawberry"
             		if Birthday.myRec.collidepoint(x, y):
 				myType="birthday"
             			goToBirthday()
@@ -141,25 +156,83 @@ if __name__ == "__main__":
 				myType="wedding"
             			goToWedding()
 
-            		if female.myRec.collidepoint(x, y):
+            		if female.myRec.collidepoint(x, y) and myType=="birthday":
             			gender="female"
-			if male.myRec.collidepoint(x, y):
+            			female = Button(100, 200, 150, 80, "Female", 255,255,255)
+            			male = Button(300, 200, 150, 80, "Male", 113, 161, 245)
+            			female.draw(main_screen)
+            			male.draw(main_screen)
+			if male.myRec.collidepoint(x, y) and myType=="birthday":
             			gender="male"
-			if layer1.myRec.collidepoint(x, y):
+            			male = Button(300, 200, 150, 80, "Male", 255,255,255)
+            			female = Button(100, 200, 150, 80, "Female", 245, 113, 179)
+            			female.draw(main_screen)
+            			male.draw(main_screen)
+			if layer1.myRec.collidepoint(x, y) and myType=="wedding":
 				price = price*1
             			layer= "1 layer"
-			if layer2.myRec.collidepoint(x, y):
+            			layer1 = Button(100, 200, 80, 80, "1", 255,255,255)
+            			layer2 = Button(200, 200, 80, 80, "2", 153, 103, 199)
+            			layer3 = Button(300, 200, 80, 80, "3", 153, 103, 199)
+            			layer4 = Button(400, 200, 80, 80, "4", 153, 103, 199)
+            			layer5 = Button(500, 200, 80, 80, "5", 153, 103, 199)
+            			layer1.draw(main_screen)
+            			layer2.draw(main_screen)
+            			layer3.draw(main_screen)
+            			layer4.draw(main_screen)
+            			layer5.draw(main_screen)
+			if layer2.myRec.collidepoint(x, y) and myType=="wedding":
 				price = price*2
             			layer= "2 layers"
-			if layer3.myRec.collidepoint(x, y):
+            			layer1 = Button(100, 200, 80, 80, "1", 153, 103, 199)
+            			layer2 = Button(200, 200, 80, 80, "2", 255,255,255)
+            			layer3 = Button(300, 200, 80, 80, "3", 153, 103, 199)
+            			layer4 = Button(400, 200, 80, 80, "4", 153, 103, 199)
+            			layer5 = Button(500, 200, 80, 80, "5", 153, 103, 199)
+            			layer1.draw(main_screen)
+            			layer2.draw(main_screen)
+            			layer3.draw(main_screen)
+            			layer4.draw(main_screen)
+            			layer5.draw(main_screen)
+			if layer3.myRec.collidepoint(x, y) and myType=="wedding":
 				price = price*3
             			layer= "3 layers"
-			if layer4.myRec.collidepoint(x, y):
+            			layer1 = Button(100, 200, 80, 80, "1", 153, 103, 199)
+            			layer2 = Button(200, 200, 80, 80, "2", 153, 103, 199)
+            			layer3 = Button(300, 200, 80, 80, "3", 255,255,255)
+            			layer4 = Button(400, 200, 80, 80, "4", 153, 103, 199)
+            			layer5 = Button(500, 200, 80, 80, "5", 153, 103, 199)
+            			layer1.draw(main_screen)
+            			layer2.draw(main_screen)
+            			layer3.draw(main_screen)
+            			layer4.draw(main_screen)
+            			layer5.draw(main_screen)
+			if layer4.myRec.collidepoint(x, y) and myType=="wedding":
 				price = price*4
             			layer= "4 layers"
-			if layer5.myRec.collidepoint(x, y):
+            			layer1 = Button(100, 200, 80, 80, "1", 153, 103, 199)
+            			layer2 = Button(200, 200, 80, 80, "2", 153, 103, 199)
+            			layer3 = Button(300, 200, 80, 80, "3", 153, 103, 199)
+            			layer4 = Button(400, 200, 80, 80, "4", 255,255,255)
+            			layer5 = Button(500, 200, 80, 80, "5", 153, 103, 199)
+            			layer1.draw(main_screen)
+            			layer2.draw(main_screen)
+            			layer3.draw(main_screen)
+            			layer4.draw(main_screen)
+            			layer5.draw(main_screen)
+			if layer5.myRec.collidepoint(x, y) and myType=="wedding":
 				price = price*5
             			layer= "5 layers"
+            			layer1 = Button(100, 200, 80, 80, "1", 153, 103, 199)
+            			layer2 = Button(200, 200, 80, 80, "2", 153, 103, 199)
+            			layer3 = Button(300, 200, 80, 80, "3", 153, 103, 199)
+            			layer4 = Button(400, 200, 80, 80, "4", 153, 103, 199)
+            			layer5 = Button(500, 200, 80, 80, "5", 255,255,255)
+            			layer1.draw(main_screen)
+            			layer2.draw(main_screen)
+            			layer3.draw(main_screen)
+            			layer4.draw(main_screen)
+            			layer5.draw(main_screen)
 			if submit.myRec.collidepoint(x, y):
             			submitButton()
 			if cancel.myRec.collidepoint(x, y):
